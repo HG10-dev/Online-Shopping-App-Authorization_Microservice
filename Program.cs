@@ -8,7 +8,7 @@ using MongoDB.Driver;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-var MyCorsPolicy = "myCorsPolicy";
+//var MyCorsPolicy = "myCorsPolicy";
 
 // Add services to the container.
 
@@ -46,6 +46,7 @@ builder.Services.AddAuthentication(option =>
     };
 });
 
+/*
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyCorsPolicy,
@@ -56,6 +57,14 @@ builder.Services.AddCors(options =>
                                               "http://localhost:3002/");
                       });
 });
+*/
+
+builder.Services.AddCors(option =>
+    option.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    }
+    ));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -73,7 +82,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(MyCorsPolicy);
+app.UseCors();
 
 app.UseAuthentication();
 

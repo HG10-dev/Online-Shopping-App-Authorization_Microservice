@@ -1,12 +1,12 @@
 ﻿using Authorization_Microservice.Models;
 using Authorization_Microservice.Services;
-using Microsoft.AspNetCore.Cors;
+//using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Authorization_Microservice.Controllers
 {
-    [EnableCors("myCorsPolicy")]
+    //[EnableCors("myCorsPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class ForgetPassController : ControllerBase

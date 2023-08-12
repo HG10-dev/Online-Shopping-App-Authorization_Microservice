@@ -3,13 +3,13 @@ using Authorization_Microservice.Repositories;
 using Authorization_Microservice.Services;
 using DnsClient;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
+//using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Authorization_Microservice.Controllers
 {
-    [EnableCors("myCorsPolicy")]
+    //[EnableCors("myCorsPolicy")]
     [Route("api/[controller]/")]
     [ApiController]
     public class AuthenticateController : ControllerBase
