@@ -12,8 +12,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.Configure<UserDatabaseSettings>(
-    builder.Configuration.GetSection(nameof(UserDatabaseSettings)));
+/*builder.Services.Configure<UserDatabaseSettings>(
+    builder.Configuration.GetSection(nameof(UserDatabaseSettings)));*/
+
+builder.Services.Configure<UserDatabaseSettings>(options =>
+{
+    options.ConnectionString = Environment.GetEnvironmentVariable("ConnectionString");
+    options.DatabaseName = Environment.GetEnvironmentVariable("DatabaseName");
+    options.UserCollectionName = Environment.GetEnvironmentVariable("UserCollectionName");
+});
 
 builder.Services.AddSingleton<IUserDatabaseSettings>(sp =>
     sp.GetRequiredService<IOptions<UserDatabaseSettings>>().Value);
